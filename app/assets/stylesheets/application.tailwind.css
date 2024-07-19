@@ -4,9 +4,66 @@
 
 @layer base {
   body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #F1F1F2;
     color: #333;
     font-size: 16px;
     font-weight: 500;
+  }
+}
+
+@layer components {
+  .header-btn {
+    display: inline-block;
+    position: relative;
+    width: 56px;
+    height: 100%;
+  }
+
+  .header-btn span {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s;
+  }
+
+  .header-btn span:nth-child(1) {
+    top: calc(50% - 8px);
+  }
+
+  .header-btn span:nth-child(2) {
+    top: 50%;
+  }
+
+  .header-btn span:nth-child(3) {
+    top: calc(50% + 8px);
+  }
+
+  .header-btn.is-open span {
+    left: 40%;
+  }
+
+  .header-btn.is-open span:nth-child(1) {
+    top: calc(50% + 9px);
+    rotate: 45deg;
+  }
+
+  .header-btn.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header-btn.is-open span:nth-child(3) {
+    top: calc(50% - 8px);
+    rotate: -45deg;
+  }
+
+  .js-header-menu.is-open {
+    transform: translateX(0);
   }
 }
