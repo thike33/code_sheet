@@ -11,7 +11,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/before_login_header' %>
+
+    <main class="flex-1">
+      <%= yield %>
+    </main>
 
     <%= render 'shared/footer' %>
   </body>
