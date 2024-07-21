@@ -1,29 +1,41 @@
-<h2>Sign up</h2>
+<section class="py-10 md:py-20">
+  <div class="mx-auto max-w-3xl px-5">
+    <h2 class="text-3xl font-bold text-center md:text-4xl">新規登録</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'mt-10' }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="grid grid-cols-1 gap-5">
+        <div>
+          <%= f.label :name, class: 'inline-block text-base md:text-lg' %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
+        </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div>
+          <%= f.label :email, class: 'inline-block text-base md:text-lg' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
+        </div>
+
+        <div>
+          <%= f.label :password, class: 'inline-block text-base md:text-lg' %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
+        </div>
+
+        <div>
+          <%= f.label :password_confirmation, class: 'inline-block text-base md:text-lg' %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <%= f.submit "新規登録", class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
+      </div>
+    <% end %>
+
+    <div class="mt-10 text-center md:mt-20">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
