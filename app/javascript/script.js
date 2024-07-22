@@ -1,23 +1,24 @@
-// PC時のユーザーメニュー
 document.addEventListener("turbo:load", () => {
   const body = document.body;
   const isLoggedIn = body.getAttribute('data-logged-in') === 'true';
-  if(isLoggedIn) {
-    const headerUserBtn = document.querySelector(".js-user-btn");
-    const headerUserMenu = document.querySelector(".js-user-menu");
-    headerUserBtn.addEventListener("click", () => {
-      headerUserBtn.classList.toggle("is-open");
-      headerUserMenu.classList.toggle("is-open");
-    });
-  }
-});
 
-// SP時のヘッダーメニュー
-document.addEventListener("turbo:load", () => {
-  const headerBtn = document.querySelector(".js-header-btn");
-  const headerMenu = document.querySelector(".js-header-menu");
-  headerBtn.addEventListener("click", () => {
-    headerBtn.classList.toggle("is-open");
-    headerMenu.classList.toggle("is-open");
-  });
+  // メニュー開閉
+  const toggleMenu = (btnSelector, menuSelector) => {
+    const btn = document.querySelector(btnSelector);
+    const menu = document.querySelector(menuSelector);
+    if (btn && menu) {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("is-open");
+        menu.classList.toggle("is-open");
+      });
+    }
+  };
+
+  // PC時のユーザーメニュー開閉
+  if (isLoggedIn) {
+    toggleMenu(".js-user-btn", ".js-user-menu");
+  }
+
+  // SP時のヘッダーメニュー開閉
+  toggleMenu(".js-header-btn", ".js-header-menu");
 });
