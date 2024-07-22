@@ -10,8 +10,13 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
-  <body>
-    <%= render 'shared/before_login_header' %>
+  <body data-logged-in="<%= user_signed_in? %>">
+    <% if user_signed_in? %>
+      <%= render 'shared/login_header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+
 
     <main class="flex-1">
       <%= yield %>

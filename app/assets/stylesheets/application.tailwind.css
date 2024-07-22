@@ -15,6 +15,7 @@
 }
 
 @layer components {
+  /* ハンバーガーボタン */
   .header-btn {
     display: inline-block;
     position: relative;
@@ -64,6 +65,11 @@
   }
 
   .js-header-menu.is-open {
+    transform: translateX(0);
+  }
+
+  /* PCのユーザーメニュー */
+  .js-user-menu.is-open {
     transform: translateX(0);
   }
 }
