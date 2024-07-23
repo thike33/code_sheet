@@ -1,0 +1,20 @@
+<section class="py-10 md:py-20">
+  <div class="mx-auto max-w-xl px-5 md:max-w-3xl lg:max-w-5xl">
+    <h2 class="text-3xl font-bold text-center md:text-4xl">コード一覧</h2>
+    <div class="grid grid-cols-1 gap-5 mt-10 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+      <article>
+        <%= link_to '#', class: 'flex flex-col h-full bg-white shadow-md duration-300 hover:shadow-xl hover:-translate-y-1.5' do %>
+          <%= image_tag 'no_image.jpg', class: 'grow-0 w-full h-full object-cover aspect-[300/200]' %>
+          <div class="p-5">
+            <h3 class="text-lg font-bold line-clamp-2">タイトルタイトルタイトルタイトルタイトル</h3>
+            <div class="flex justify-between items-center mt-4">
+              <span class="inline-block rounded-full px-2 py-1 bg-sub-color text-white text-sm">カテゴリー</span>
+              <time class="text-base font-normal" datetime="">2024/07/01</time>
+            </div>
+            <p class="mt-4 text-base line-clamp-2">テキストテキストテキストテキストテキストテキストテキスト</p>
+          </div>
+        <% end %>
+      </article>
+    </div>
+  </div>
+</section>
