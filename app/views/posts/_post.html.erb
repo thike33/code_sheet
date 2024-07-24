@@ -1,5 +1,5 @@
 <article>
-  <%= link_to '#', class: 'flex flex-col h-full bg-white shadow-md duration-300 hover:shadow-xl hover:-translate-y-1.5' do %>
+  <%= link_to post_path(post), class: 'flex flex-col h-full bg-white shadow-md duration-300 hover:shadow-xl hover:-translate-y-1.5' do %>
     <%= image_tag 'no_image.jpg', class: 'grow-0 w-full h-full object-cover aspect-[300/200]' %>
     <div class="p-5">
       <h3 class="text-lg font-bold line-clamp-2"><%= post.title %></h3>
