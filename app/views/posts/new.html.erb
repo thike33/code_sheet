@@ -1,26 +1,6 @@
 <section class="py-10 md:py-20">
   <div class="mx-auto max-w-3xl px-5">
     <h2 class="text-3xl font-bold text-center md:text-4xl"><%= t('.title') %></h2>
-    <%= form_with model: @post, class: 'grid grid-cols-1 gap-5 mt-10' do |f| %>
-      <div>
-        <%= f.label :title, class: 'inline-block text-base md:text-lg' %>
-        <%= f.text_field :title, autofocus: true, class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
-      </div>
-
-      <div>
-        <%= f.label :description, class: 'inline-block text-base md:text-lg' %>
-        <%= f.text_area :description, autofocus: true, class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
-      </div>
-
-      <div>
-        <%= f.label :image, class: 'inline-block text-base md:text-lg' %>
-        <%= f.file_field :image, class: 'block mt-2 w-full text-base', accept: 'image/*' %>
-        <%= f.hidden_field :image_cache %>
-      </div>
-
-      <div class="mt-10 text-center">
-        <%= f.submit "投稿する", class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
-      </div>
-    <% end %>
+    <%= render 'form', post: @post %>
   </div>
 </section>
