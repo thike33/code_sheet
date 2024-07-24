@@ -9,5 +9,12 @@
     <div class="mt-5 mx-auto max-w-xl md:mt-10">
       <%= image_tag @post.image_url, class: 'w-full max-h-[800px] object-contain' %>
     </div>
+
+    <% if current_user.own?(@post) %>
+      <div class="flex justify-center gap-5 mt-10">
+        <%= link_to t('helper.submit.edit'), edit_post_path(@post), class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
+        <%= link_to t('helper.submit.destroy'), '#', class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
+      </div>
+    <% end %>
   </div>
 </section>
