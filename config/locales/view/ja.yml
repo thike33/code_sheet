@@ -1,4 +1,6 @@
 ja:
+  defaults:
+    delete_confirm: 削除しますか？
   helper:
     submit:
       create: 登録する
