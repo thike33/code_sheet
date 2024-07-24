@@ -1,9 +1,11 @@
 ja:
   helper:
     submit:
-      create: 登録
-      update: 更新
-      save: 保存
+      create: 登録する
+      update: 更新する
+      save: 保存する
+      edit: 編集する
+      destroy: 削除する
   header:
     title: CodeSheet
     login: ログイン
@@ -32,3 +34,5 @@ ja:
       no_post: 現在、投稿がありません
     new:
       title: コード登録
+    edit:
+      title: コード編集
