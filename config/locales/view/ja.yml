@@ -1,0 +1,34 @@
+ja:
+  helper:
+    submit:
+      create: 登録
+      update: 更新
+      save: 保存
+  header:
+    title: CodeSheet
+    login: ログイン
+    logout: ログアウト
+    create_user: 新規登録
+    post_index: コード一覧
+    post_new: コード登録
+    my_page: マイページ
+    my_post_index: マイコード一覧
+    bookmark_index: ブックマーク一覧
+  footer:
+    terms_of_service: 利用規約
+    privacy_policy: プライバシーポリシー
+    contact: お問い合わせ
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      datetime: "%Y-%m-%d"
+  users:
+    new:
+      title: 新規登録
+      to_login_page: ログインページへ
+  posts:
+    index:
+      title: コード一覧
+      no_post: 現在、投稿がありません
+    new:
+      title: コード登録
