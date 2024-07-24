@@ -1,0 +1,10 @@
+<section class="py-10 md:py-20">
+  <div class="mx-auto max-w-xl px-5 md:max-w-3xl lg:max-w-5xl">
+    <h2 class="text-2xl font-bold md:text-3xl"><%= @post.title %></h2>
+    <div class="flex items-center gap-5 mt-5 md:gap-10 md:mt-10">
+      <span class="inline-block flex-shrink-0 rounded-full px-2 py-1 bg-sub-color text-white text-sm">カテゴリー</span>
+      <time class="text-base font-normal" datetime="<%= l @post.created_at, format: :datetime %>"><%= l @post.created_at %></time>
+    </div>
+    <p class="mt-5 text-base md:mt-10 md:text-lg"><%= @post.description %></p>
+  </div>
+</section>
