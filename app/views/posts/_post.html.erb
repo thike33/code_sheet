@@ -1,13 +1,9 @@
-<article>
-  <%= link_to post_path(post), class: 'flex flex-col h-full bg-white shadow-md duration-300 hover:shadow-xl hover:-translate-y-1.5' do %>
-    <%= image_tag 'no_image.jpg', class: 'grow-0 w-full h-full object-cover aspect-[300/200]' %>
-    <div class="p-5">
-      <h3 class="text-lg font-bold line-clamp-2"><%= post.title %></h3>
-      <div class="flex justify-between items-center gap-5 mt-4">
-        <span class="inline-block flex-shrink-0 rounded-full px-2 py-1 bg-sub-color text-white text-sm">カテゴリー</span>
-        <time class="text-base font-normal" datetime="<%= l post.created_at, format: :datetime %>"><%= l post.created_at %></time>
-      </div>
-      <p class="mt-4 text-base line-clamp-2"><%= post.description %></p>
-    </div>
-  <% end %>
-</article>
+<%= link_to post_path(post), class: 'grid grid-rows-subgrid row-span-4 gap-5 pb-5 bg-white shadow-md duration-300 hover:shadow-xl hover:-translate-y-1.5' do %>
+  <%= image_tag post.image_url, class: 'w-full object-cover aspect-[300/200]' %>
+  <h3 class="px-5 text-lg font-bold line-clamp-2"><%= post.title %></h3>
+  <div class="flex justify-between items-center gap-5 px-5">
+    <span class="inline-block flex-shrink-0 rounded-full px-2 py-1 bg-sub-color text-white text-sm">カテゴリー</span>
+    <time class="text-base font-normal" datetime="<%= l post.created_at, format: :datetime %>"><%= l post.created_at %></time>
+  </div>
+  <p class="px-5 text-base line-clamp-2"><%= post.description %></p>
+<% end %>
