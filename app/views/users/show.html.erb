@@ -1,0 +1,25 @@
+<section class="py-10 md:py-20">
+  <div class="mx-auto max-w-xl px-5">
+    <h2 class="text-3xl font-bold text-center md:text-4xl"><%= t('.title') %></h2>
+    <dl class="grid grid-cols-1 gap-5 mt-10 md:gap-10">
+      <div class="grid grid-cols-1 gap-2 md:grid-cols-[160px_1fr] md:gap-5">
+        <dt class="text-lg font-bold md:text-xl"><%= t('.user_name') %></dt>
+        <dd class="text-base font-normal md:text-lg"><%= @user.name %></dd>
+      </div>
+      <div class="grid grid-cols-1 gap-2 md:grid-cols-[160px_1fr] md:gap-5">
+        <dt class="text-lg font-bold"><%= t('.email') %></dt>
+        <dd class="text-base font-normal break-all"><%= @user.email %></dd>
+      </div>
+      <div class="grid grid-cols-1 gap-2 md:grid-cols-[160px_1fr] md:items-center md:gap-5">
+        <dt class="text-lg font-bold"><%= t('.avatar') %></dt>
+        <dd class="text-base font-normal">
+          <%= image_tag 'user_icon.svg', size: '80x80', class: 'w-20 h-20 object-cover rounded-full', alt: 'アバターアイコン' %>
+        </dd>
+      </div>
+    </dl>
+    <div class="flex justify-center gap-5 mt-10">
+      <%= link_to '編集する', '', class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
+      <%= link_to 'パスワード変更', '', class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70', data: { turbo_method: :delete, turbo_confirm: t('defaults.delete_confirm') } %>
+    </div>
+  </div>
+</section>
