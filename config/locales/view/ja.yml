@@ -30,6 +30,11 @@ ja:
     new:
       title: 新規登録
       to_login_page: ログインページへ
+    show:
+      title: マイページ
+      user_name: ユーザー名
+      email: メールアドレス
+      avatar: アバター
   posts:
     index:
       title: コード一覧
