@@ -1,28 +1,40 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @user = User.new
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @user = User.new(sign_up_params)
+    if @user.save
+      redirect_to new_user_session_path, success: t('defaults.flash_message.created', item: User.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.flash_message.not_created', item: User.model_name.human)
+      render :new, status: :unprocessable_entity
+    end
+  end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = current_user
+    if @user.update(account_update_params)
+      redirect_to user_path(@user), success: t('defaults.flash_message.updated', item: User.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.flash_message.not_updated', item: User.model_name.human)
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -49,15 +61,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     user_path(current_user)
   end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  # サインアップ時のストロングパラメータを追加（デフォルトに加えて）
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name])
+  end
 
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  # アカウント編集時のストロングパラメータを追加（デフォルトに加えて）
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar avatar_cache])
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
