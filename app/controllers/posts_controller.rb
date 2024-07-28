@@ -39,6 +39,10 @@ class PostsController < ApplicationController
     redirect_to posts_path, status: :see_other
   end
 
+  def user_index
+    @posts = Post.where(user_id: params[:id]).order(created_at: :desc)
+  end
+
   private
 
   def post_params

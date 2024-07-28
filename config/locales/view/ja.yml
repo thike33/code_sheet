@@ -43,3 +43,6 @@ ja:
       title: コード登録
     edit:
       title: コード編集
+    user_index:
+      title: マイコード一覧
+      no_post: 現在、投稿がありません

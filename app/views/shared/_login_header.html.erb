@@ -22,7 +22,7 @@
       <%= link_to t('header.my_page'), user_path(current_user), class: 'block p-3 text-white text-center hover:underline' %>
     </li>
     <li>
-      <%= link_to t('header.my_post_index'), '', class: 'block p-3 text-white text-center hover:underline' %>
+      <%= link_to t('header.my_post_index'), user_index_post_path(current_user), class: 'block p-3 text-white text-center hover:underline' %>
     </li>
     <li>
       <%= link_to  t('header.bookmark_index'), '', class: 'block p-3 text-white text-center hover:underline' %>
@@ -46,7 +46,7 @@
       <%= link_to t('header.my_page'), user_path(current_user), class: 'block p-3 text-white text-center' %>
     </li>
     <li>
-      <%= link_to t('header.my_post_index'), '', class: 'block p-3 text-white text-center' %>
+      <%= link_to t('header.my_post_index'), user_index_post_path(current_user), class: 'block p-3 text-white text-center' %>
     </li>
     <li>
       <%= link_to  t('header.bookmark_index'), '', class: 'block p-3 text-white text-center' %>
