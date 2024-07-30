@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.codes.build
   end
 
   def create
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:codes).find(params[:id])
   end
 
   def edit
@@ -48,6 +49,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :image_cache)
+    params.require(:post).permit(:title, :description, :image, :image_cache, codes_attributes: [:id, :language, :body, :_destroy])
   end
 end
