@@ -11,3 +11,14 @@ ja:
         title: タイトル
         description: コード説明
         image: サムネイル
+      code:
+        language: 言語
+        body: コード
+      codes:
+        body: コード
+      code/language:
+        html: HTML
+        css: CSS
+        javascript: JavaScript
+        ruby: Ruby
+        php: PHP
