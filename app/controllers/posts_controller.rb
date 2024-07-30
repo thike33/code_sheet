@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   end
 
   def user_index
-    @posts = Post.where(user_id: params[:id]).order(created_at: :desc)
+    @posts = Post.includes(:user).where(user_id: params[:id]).order(created_at: :desc)
   end
 
   private
