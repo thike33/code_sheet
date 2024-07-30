@@ -1,4 +1,4 @@
-<%= form_with model: @post, class: 'grid grid-cols-1 gap-5 mt-10' do |f| %>
+<%= form_with model: @post, class: 'grid grid-cols-1 gap-5 mt-10 md:gap-10' do |f| %>
   <%= render 'shared/error_message', object: f.object %>
   <div>
     <%= f.label :title, class: 'inline-block text-base md:text-lg required' %>
@@ -15,6 +15,22 @@
     <%= f.file_field :image, class: 'block mt-2 w-full text-base', accept: 'image/*' %>
     <%= f.hidden_field :image_cache %>
   </div>
+
+  <%= f.fields_for :codes do |c| %>
+    <div class="flex flex-col items-start gap-2">
+      <%= c.label :language, class: 'inline-block text-base md:text-lg' %>
+      <%= c.select :language, Code.enum_options_for_select(:language), {}, { class: 'p-4 text-base' } %>
+    </div>
+
+    <div class="field">
+      <%= c.label :body, class: 'inline-block text-base md:text-lg required' %>
+      <%= c.text_area :body, class: 'block mt-2 w-full min-h-[400px] p-2' %>
+    </div>
+
+    <div class="field">
+      <%= link_to "Remove", '#', class: "remove_fields" %>
+    </div>
+  <% end %>
 
   <div class="mt-10 text-center">
     <%= f.submit nil, class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>

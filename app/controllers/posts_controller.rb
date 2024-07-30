@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.includes(:user).order(created_at: :desc)
   end
 
   def new
     @post = Post.new
+    @post.codes.build
   end
 
   def create
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:codes).find(params[:id])
   end
 
   def edit
@@ -42,12 +43,12 @@ class PostsController < ApplicationController
   end
 
   def user_index
-    @posts = Post.where(user_id: params[:id]).order(created_at: :desc)
+    @posts = Post.includes(:user).where(user_id: params[:id]).order(created_at: :desc)
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :image_cache)
+    params.require(:post).permit(:title, :description, :image, :image_cache, codes_attributes: [:id, :language, :body, :_destroy])
   end
 end

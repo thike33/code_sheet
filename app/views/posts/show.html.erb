@@ -10,6 +10,13 @@
       <%= image_tag @post.image_url, class: 'w-full max-h-[800px] object-contain' %>
     </div>
 
+    <% @post.codes.each do |code| %>
+      <div class="flex flex-col gap-2">
+        <p class="mt-5 text-xl font-bold md:mt-10"><%= t("activerecord.attributes.code/language.#{code.language}") %></p>
+        <code class="p-5 bg-white"><%= code.body %></code>
+      </div>
+    <% end %>
+
     <% if current_user.own?(@post) %>
       <div class="flex justify-center gap-5 mt-10">
         <%= link_to t('helper.submit.edit'), edit_post_path(@post), class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>

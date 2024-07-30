@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     member do
       get 'user_index'
     end
+
+    resources :codes
   end
 
   get "up" => "rails/health#show", as: :rails_health_check
