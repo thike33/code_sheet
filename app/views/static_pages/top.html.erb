@@ -1,1 +1,62 @@
-<h1>トップページ</h1>
+<section class="py-10 md:pt-20">
+  <div class="mx-auto max-w-xl px-5 md:max-w-3xl lg:max-w-5xl">
+    <h2 class="text-5xl font-bold text-center md:text-7xl">CodeSheet</h2>
+    <div class="md:grid md:grid-cols-[400px_1fr] md:items-center md:gap-10">
+      <div class="mx-auto max-w-[500px]">
+        <%= image_tag 'top_woman.png', class: 'w-full object-contain' %>
+      </div>
+      <div class="">
+        <p class="-mt-10 text-lg md:mt-0">
+          CodeSheetは自分が気に入ったコードや、よく使うコードを保存・再利用できるアプリです。<br>
+          保存したコードは自分用にまとめておくこともできますし、他の人に見せたい時は共有することもできます。
+        </p>
+        <div class="mt-5 text-center md:mt-10">
+          <%= link_to t('.create_user'), new_user_registration_path, class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-10">
+  <div class="mx-auto max-w-xl px-5 md:max-w-3xl lg:max-w-5xl">
+    <h2 class="text-2xl font-bold text-center md:text-4xl">CodeSheetで出来ること</h2>
+    <div class="grid grid-cols-1 gap-5 mt-5 md:grid-cols-2 md:gap-10 md:mt-10">
+      <div class="p-5 bg-white">
+        <h3 class="font-bold md:text-lg">ログイン前の機能</h3>
+        <ul class="mt-5 pl-4">
+          <li class="list-disc">コードの閲覧</li>
+          <li class="list-disc">コードの検索</li>
+        </ul>
+      </div>
+      <div class="p-5 bg-white">
+        <h3 class="font-bold md:text-lg">ログイン後の機能</h3>
+        <ul class="mt-5 pl-4">
+          <li class="list-disc">コードの登録</li>
+          <li class="list-disc">いいね</li>
+          <li class="list-disc">ブックマーク</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-5 p-5 bg-white md:mt-10 md:mx-auto md:max-w-[344px] lg:max-w-[472px]">
+      <h3 class="font-bold md:text-lg">今後追加予定の機能</h3>
+      <ul class="mt-5 pl-4">
+        <li class="list-disc">検索</li>
+        <li class="list-disc">いいね</li>
+        <li class="list-disc">ブックマーク</li>
+        <li class="list-disc">コードの非公開</li>
+        <li class="list-disc">etc...</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="py-10 md:pb-20">
+  <div class="mx-auto max-w-xl px-5 md:max-w-3xl lg:max-w-5xl">
+    <p class="text-lg font-bold text-center md:text-2xl">まずは登録して、<br class="inline-block md:hidden">お気に入りのコードを登録してみよう！</p>
+    <div class="flex justify-center items-center gap-5 mt-10 text-center">
+      <%= link_to t('.create_user'), new_user_registration_path, class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
+      <%= link_to t('.login'), new_user_session_path, class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
+    </div>
+  </div>
+</div>
