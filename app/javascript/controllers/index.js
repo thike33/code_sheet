@@ -3,6 +3,8 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
+import CodeCopyController from "./code_copy_controller"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+application.register("code-copy", CodeCopyController)
