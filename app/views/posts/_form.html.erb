@@ -22,13 +22,9 @@
       <%= c.select :language, Code.enum_options_for_select(:language), {}, { class: 'p-4 text-base' } %>
     </div>
 
-    <div class="field">
+    <div>
       <%= c.label :body, class: 'inline-block text-base md:text-lg required' %>
       <%= c.text_area :body, class: 'block mt-2 w-full min-h-[400px] p-2' %>
-    </div>
-
-    <div class="field">
-      <%= link_to "Remove", '#', class: "remove_fields" %>
     </div>
   <% end %>
 
