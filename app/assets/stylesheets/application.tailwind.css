@@ -64,11 +64,19 @@
     rotate: -45deg;
   }
 
+  .js-header-btn.is-open::after {
+    transform: rotate(180deg);
+  }
+
   .js-header-menu.is-open {
     transform: translateX(0);
   }
 
   /* PCのユーザーメニュー */
+  .js-user-btn.is-open::after {
+    transform: rotate(180deg);
+  }
+
   .js-user-menu.is-open {
     transform: translateX(0);
   }
