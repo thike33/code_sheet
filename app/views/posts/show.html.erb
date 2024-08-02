@@ -6,9 +6,11 @@
       <time class="text-base font-normal" datetime="<%= l @post.created_at, format: :datetime %>"><%= l @post.created_at %></time>
     </div>
     <p class="mt-5 text-base md:mt-10 md:text-lg"><%= @post.description %></p>
-    <div class="mt-5 mx-auto max-w-xl md:mt-10">
-      <%= image_tag @post.image_url, class: 'w-full max-h-[800px] object-contain' %>
-    </div>
+    <% if @post.image_url.present? %>
+      <div class="mt-5 mx-auto max-w-xl md:mt-10">
+        <%= image_tag @post.image_url, class: 'w-full max-h-[800px] object-contain' %>
+      </div>
+    <% end %>
 
     <% @post.codes.each do |code| %>
       <div class="flex flex-col gap-2 code-container" data-controller="code-copy">
@@ -17,7 +19,7 @@
           <code class="h-full" data-code-copy-target="code"><%= code.body %></code>
         </pre>
         <div class="-mt-5 text-center">
-          <button type="button" data-action="click->code-copy#copy" class="inline-block rounded max-w-[160px] w-full p-3 bg-green-500 text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70">コピー</button>
+          <button type="button" data-action="click->code-copy#copy" class="inline-block rounded max-w-[160px] w-full p-3 bg-green-500 text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70"><%= t('helper.submit.copy') %></button>
         </div>
       </div>
     <% end %>

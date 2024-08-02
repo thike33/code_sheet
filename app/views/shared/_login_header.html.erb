@@ -11,7 +11,7 @@
         <%= link_to t('header.post_new'), new_post_path, class: 'flex items-center h-full text-white hover:underline' %>
       </li>
       <li class="h-full">
-        <button type="button" class="flex items-center h-full text-white hover:underline js-user-btn">
+        <button type="button" class="flex items-center h-full text-white js-user-btn after:content-['＜'] after:text-white after:font-bold after:text-xs after:leading-none after:duration-300">
           <%= image_tag current_user.avatar_url, class: 'w-12 h-12 object-cover rounded-full', size: '48x48', alt: 'ユーザーアイコン' %>
         </button>
       </li>
@@ -32,7 +32,7 @@
     </li>
   </ul>
 
-  <button type="button" class="flex items-center h-full text-white md:hidden hover:underline js-header-btn">
+  <button type="button" class="flex items-center h-full text-white md:hidden js-header-btn after:content-['＜'] after:text-white after:font-bold after:text-xs after:leading-none after:duration-300">
     <%= image_tag 'user_icon.svg', class: 'w-12 h-12 object-cover rounded-full', size: '48x48', alt: 'ユーザーアイコン' %>
   </button>
   <ul class="flex flex-col gap-1 fixed top-14 right-0 translate-x-40 z-50 w-40 py-3 bg-sub-color duration-300 js-header-menu">

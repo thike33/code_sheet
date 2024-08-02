@@ -2,12 +2,12 @@
   <%= render 'shared/error_message', object: f.object %>
   <div>
     <%= f.label :title, class: 'inline-block text-base md:text-lg required' %>
-    <%= f.text_field :title, autofocus: true, class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
+    <%= f.text_field :title, class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
   </div>
 
   <div>
     <%= f.label :description, class: 'inline-block text-base md:text-lg' %>
-    <%= f.text_area :description, autofocus: true, class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
+    <%= f.text_area :description, class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3' %>
   </div>
 
   <div>
