@@ -6,9 +6,11 @@
       <time class="text-base font-normal" datetime="<%= l @post.created_at, format: :datetime %>"><%= l @post.created_at %></time>
     </div>
     <p class="mt-5 text-base md:mt-10 md:text-lg"><%= @post.description %></p>
-    <div class="mt-5 mx-auto max-w-xl md:mt-10">
-      <%= image_tag @post.image_url, class: 'w-full max-h-[800px] object-contain' %>
-    </div>
+    <% if @post.image_url.present? %>
+      <div class="mt-5 mx-auto max-w-xl md:mt-10">
+        <%= image_tag @post.image_url, class: 'w-full max-h-[800px] object-contain' %>
+      </div>
+    <% end %>
 
     <% @post.codes.each do |code| %>
       <div class="flex flex-col gap-2 code-container" data-controller="code-copy">
