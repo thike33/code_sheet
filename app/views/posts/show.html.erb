@@ -5,10 +5,10 @@
       <span class="inline-block flex-shrink-0 rounded-full px-2 py-1 bg-sub-color text-white text-sm">カテゴリー</span>
       <time class="text-base font-normal" datetime="<%= l @post.created_at, format: :datetime %>"><%= l @post.created_at %></time>
     </div>
-    <p class="mt-5 text-base md:mt-10 md:text-lg"><%= @post.description %></p>
+    <p class="mt-5 text-base whitespace-pre-wrap md:mt-10 md:text-lg"><%= @post.description %></p>
     <% if @post.image_url.present? %>
       <div class="mt-5 mx-auto max-w-xl md:mt-10">
-        <%= image_tag @post.image_url, class: 'w-full max-h-[800px] object-contain' %>
+        <%= image_tag @post.image_url, class: 'mx-auto max-w-full max-h-[300px] object-contain' %>
       </div>
     <% end %>
 
