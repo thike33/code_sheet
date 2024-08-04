@@ -21,6 +21,10 @@
           <%= f.file_field :avatar, class: 'block mt-2 w-full text-base', accept: 'image/*' %>
           <%= f.hidden_field :avatar_cache %>
         </div>
+
+        <div>
+          <%= image_tag current_user.avatar_url, class: 'rounded-full w-28 h-28 object-cover' %>
+        </div>
       </div>
 
       <div class="mt-10 text-center">

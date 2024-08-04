@@ -16,6 +16,10 @@
     <%= f.hidden_field :image_cache %>
   </div>
 
+  <% if @post.image_url.present? %>
+    <%= image_tag @post.image_url, class: 'w-64 object-contain' %>
+  <% end %>
+
   <%= f.fields_for :codes do |c| %>
     <div class="flex flex-col items-start gap-2">
       <%= c.label :language, class: 'inline-block text-base md:text-lg' %>
