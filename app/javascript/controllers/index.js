@@ -4,7 +4,7 @@
 
 import { application } from "./application"
 import CodeCopyController from "./code_copy_controller"
+import ChangeFormController from "./change_form_controller"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
 application.register("code-copy", CodeCopyController)
+application.register("change-form", ChangeFormController)

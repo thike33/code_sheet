@@ -20,17 +20,31 @@
     <%= image_tag @post.image_url, class: 'w-64 object-contain' %>
   <% end %>
 
-  <%= f.fields_for :codes do |c| %>
-    <div class="flex flex-col items-start gap-2">
-      <%= c.label :language, class: 'inline-block text-base md:text-lg' %>
-      <%= c.select :language, Code.enum_options_for_select(:language), {}, { class: 'p-4 text-base' } %>
-    </div>
+  <div data-controller="change-form">
+    <%= f.fields_for :codes do |c| %>
+      <div class="mt-5 md:mt-10 js-code" data-change-form-target="form-code">
+        <div class="relative">
+          <div class="js-form-code">
+            <div class="flex flex-col items-start gap-2">
+              <%= c.label :language, class: 'inline-block text-base md:text-lg' %>
+              <%= c.select :language, Code.enum_options_for_select(:language), {}, { class: 'p-4 text-base' } %>
+            </div>
 
-    <div>
-      <%= c.label :body, class: 'inline-block text-base md:text-lg required' %>
-      <%= c.text_area :body, class: 'block mt-2 w-full min-h-[400px] p-2' %>
+            <div class="mt-5 md:mt-10">
+              <%= c.label :body, class: 'inline-block text-base md:text-lg required' %>
+              <%= c.text_area :body, class: 'block mt-2 w-full min-h-[400px] p-2' %>
+            </div>
+          </div>
+          <%= c.hidden_field :_destroy, class: 'destroy-flag' %>
+          <button type="button" data-action="click->change-form#remove" class="inline-block absolute bottom-[400px] right-0 rounded max-w-[90px] w-full p-2 bg-red-500 text-white text-sm font-bold text-center cursor-pointer">コード削除</button>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="flex justify-center gap-5 mt-10">
+      <button type="button" data-action="click->change-form#add" class="inline-block rounded max-w-[160px] w-full p-3 bg-green-500 text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70">コード追加</button>
     </div>
-  <% end %>
+  </div>
 
   <div class="mt-10 text-center">
     <%= f.submit nil, class: 'inline-block rounded max-w-[160px] w-full p-3 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70' %>
