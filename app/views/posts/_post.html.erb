@@ -1,13 +1,19 @@
-<%= link_to post_path(post), class: 'grid grid-rows-subgrid row-span-4 gap-5 pb-5 bg-white shadow-md duration-300 hover:shadow-xl hover:-translate-y-1.5' do %>
-  <% if post.image_url.present? %>
-    <%= image_tag post.image_url, class: 'w-full object-cover aspect-[300/200]' %>
-  <% else %>
-    <%= image_tag 'no_image.jpg', class: 'w-full object-cover aspect-[300/200]' %>
+<article class="grid grid-rows-subgrid row-span-4 gap-5 pb-5 bg-white shadow-lg overflow-hidden">
+  <%= link_to post_path(post), class: 'block group' do %>
+    <% if post.image_url.present? %>
+      <%= image_tag post.image_url, class: 'w-full object-cover aspect-[300/200] duration-300 group-hover:scale-110' %>
+    <% else %>
+      <%= image_tag 'no_image.jpg', class: 'w-full object-cover aspect-[300/200] duration-300 group-hover:scale-110' %>
+    <% end %>
   <% end %>
-  <h3 class="px-5 text-lg font-bold line-clamp-2"><%= post.title %></h3>
+  <h3 class="px-5 text-lg font-bold line-clamp-2">
+    <%= link_to post_path(post), class: 'hover:underline' do %>
+      <%= post.title %>
+    <% end %>
+  </h3>
   <div class="flex justify-between items-center gap-5 px-5">
     <span class="inline-block flex-shrink-0 rounded-full px-2 py-1 bg-sub-color text-white text-sm">カテゴリー</span>
     <time class="text-base font-normal" datetime="<%= l post.created_at, format: :datetime %>"><%= l post.created_at %></time>
   </div>
   <p class="px-5 text-base line-clamp-2"><%= post.description %></p>
-<% end %>
+</article>
