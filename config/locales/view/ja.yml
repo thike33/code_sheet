@@ -15,7 +15,7 @@ ja:
       save: 保存する
       edit: 編集する
       destroy: 削除する
-      copy: コードをコピー
+      copy: コードコピー
   header:
     title: CodeSheet
     login: ログイン
