@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     member do
       get 'user_index'
     end
+    collection do
+      get :bookmarks
+    end
 
     resources :codes
   end
+  resources :bookmarks, only: %i[create destroy]
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
