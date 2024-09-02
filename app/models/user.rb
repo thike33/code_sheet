@@ -14,4 +14,20 @@ class User < ApplicationRecord
   def own?(object)
     id == object&.user_id
   end
+
+  # ブックマーク用のメソッド
+  # 投稿をユーザーのブックマークに追加
+  def bookmark(post)
+    bookmark_posts << post
+  end
+
+  # 投稿をユーザーのブックマークから削除
+  def unbookmark(post)
+    bookmark_posts.destroy(post)
+  end
+
+  # 投稿がユーザーのブックマークに含まれているか確認
+  def bookmark?(post)
+    bookmark_posts.include?(post)
+  end
 end
