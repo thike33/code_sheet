@@ -46,6 +46,10 @@ class PostsController < ApplicationController
     @posts = Post.includes(:user).where(user_id: params[:id]).order(created_at: :desc)
   end
 
+  def bookmarks
+    @posts = current_user.bookmark_posts.order(created_at: :desc)
+  end
+
   private
 
   def post_params
