@@ -58,3 +58,6 @@ ja:
     user_index:
       title: マイコード一覧
       no_post: 現在、投稿がありません
+    bookmarks:
+      title: ブックマーク一覧
+      no_post: ブックマークされた投稿がありません
