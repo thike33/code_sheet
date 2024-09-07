@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   has_many :bookmark_posts, through: :bookmarks, source: :post
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
 
   validates :name, presence: true, length: { maximum: 100 }
   # Include default devise modules. Others available are:
