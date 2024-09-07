@@ -15,9 +15,11 @@
       <%= post.title %>
     <% end %>
   </h3>
-  <% unless current_user.own?(post) %>
-    <div class="flex justify-end gap-5 px-5">
-      <%= render 'bookmark_buttons', { post: post } %>
-    </div>
+  <% if user_signed_in? %>
+    <% unless current_user.own?(post) %>
+      <div class="flex justify-end gap-5 px-5">
+        <%= render 'bookmark_buttons', { post: post } %>
+      </div>
+    <% end %>
   <% end %>
 </article>
