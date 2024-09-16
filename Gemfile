@@ -65,6 +65,9 @@ gem 'fog-aws'
 # 環境変数を管理
 gem 'dotenv-rails'
 
+# ページネーション
+gem 'kaminari'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
