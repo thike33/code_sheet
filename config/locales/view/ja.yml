@@ -34,6 +34,12 @@ ja:
     formats:
       default: "%Y/%m/%d"
       datetime: "%Y-%m-%d"
+  pagination:
+    first: "<<"
+    last: ">>"
+    previous: "<"
+    next: ">"
+    truncate: "&hellip;"
   static_pages:
     top:
       create_user: 新規登録

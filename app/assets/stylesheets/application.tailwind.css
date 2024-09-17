@@ -90,4 +90,12 @@
     font-size: 20px;
     font-weight: 400;
   }
+
+  .current {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    background-color: #1995AD;
+    color: #fff;
+  }
 }
