@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user).order(created_at: :desc)
+    @posts = Post.includes(:user).order(created_at: :desc).page(params[:page])
   end
 
   def new
@@ -43,11 +43,11 @@ class PostsController < ApplicationController
   end
 
   def user_index
-    @posts = Post.includes(:user).where(user_id: params[:id]).order(created_at: :desc)
+    @posts = Post.includes(:user).where(user_id: params[:id]).order(created_at: :desc).page(params[:page])
   end
 
   def bookmarks
-    @posts = current_user.bookmark_posts.order(created_at: :desc)
+    @posts = current_user.bookmark_posts.order(created_at: :desc).page(params[:page])
   end
 
   private
