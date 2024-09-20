@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     end
 
     resources :codes
+    resources :likes, only: %i[create destroy], shallow: true
+    get :likes, on: :collection
   end
   resources :bookmarks, only: %i[create destroy]
 
