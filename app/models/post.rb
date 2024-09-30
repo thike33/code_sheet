@@ -10,6 +10,6 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def likes_count
-    count = likes.count
+    likes.count
   end
 end
