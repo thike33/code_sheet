@@ -1,0 +1,8 @@
+  <%= link_to post_likes_path(post), data: { turbo_stream: true, turbo_method: :post }, id: "like-button-for-post-#{post.id}" do %>
+    <div class="flex items-center gap-2">
+      <%= image_tag 'unlike.png', class: 'w-6' %>
+      <% if post.likes_count > 0 %>
+        <span class="text-sm"><%= post.likes_count %></span>
+      <% end %>
+    </div>
+  <% end%>

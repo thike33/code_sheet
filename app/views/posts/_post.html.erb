@@ -17,9 +17,16 @@
   </h3>
   <% if user_signed_in? %>
     <% unless current_user.own?(post) %>
-      <div class="flex justify-end gap-5 px-5">
+      <div class="flex justify-end items-center gap-5 px-5">
+        <%= render 'likes_buttons', { post: post } %>
         <%= render 'bookmark_buttons', { post: post } %>
       </div>
     <% end %>
+  <% end %>
+  <% if action_name == 'user_index' %>
+    <div class="flex justify-end items-center gap-2 px-5">
+      <%= image_tag 'like.png', class: 'w-6' %>
+      <span class="text-sm"><%= post.likes_count %></span>
+    </div>
   <% end %>
 </article>

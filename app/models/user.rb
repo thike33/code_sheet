@@ -32,4 +32,20 @@ class User < ApplicationRecord
   def bookmark?(post)
     bookmark_posts.include?(post)
   end
+
+  # いいね用のメソッド
+  # 指定された投稿に対して、ユーザーがいいねをしているか確認
+  def like?(post)
+    post.likes.pluck(:user_id).include?(self.id)
+  end
+
+  # 指定された投稿にいいねを追加
+  def like(post)
+    like_posts << post
+  end
+
+  # 指定された投稿に対するいいねを削除
+  def unlike(post)
+    like_posts.destroy(post)
+  end
 end
