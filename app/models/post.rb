@@ -12,4 +12,14 @@ class Post < ApplicationRecord
   def likes_count
     likes.count
   end
+
+  # titleとdescriptionに対して検索を許可する
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title description]
+  end
+
+  # 関連先のモデルを検索する必要がなければ空の配列を返す
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
 end
