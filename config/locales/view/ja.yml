@@ -44,6 +44,8 @@ ja:
     top:
       create_user: 新規登録
       login: ログイン
+    privacy:
+      title: プライバシーポリシー
   users:
     new:
       title: 新規登録

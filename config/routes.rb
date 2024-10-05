@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get :likes, on: :collection
   end
   resources :bookmarks, only: %i[create destroy]
+  get "privacy", to: "static_pages#privacy"
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
