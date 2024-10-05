@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: %i[create destroy]
   get "privacy", to: "static_pages#privacy"
+  get "terms_of_service", to: "static_pages#terms_of_service"
 
   get "up" => "rails/health#show", as: :rails_health_check
 end

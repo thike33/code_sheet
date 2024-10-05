@@ -46,6 +46,8 @@ ja:
       login: ログイン
     privacy:
       title: プライバシーポリシー
+    terms_of_service:
+      title: 利用規約
   users:
     new:
       title: 新規登録
