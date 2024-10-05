@@ -98,4 +98,9 @@
     background-color: #1995AD;
     color: #fff;
   }
+
+  /* 並び順のボタン */
+  .js-sort-content.is-open {
+    display: block;
+  }
 }
