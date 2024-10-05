@@ -2,6 +2,9 @@ class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    if params[:sort] == 'likes'
+      @posts = @q.result(distinct: true).includes(:user).order(likes_count: :desc, created_at: :desc).page(params[:page])
+    end
   end
 
   def new
@@ -46,11 +49,17 @@ class PostsController < ApplicationController
   def user_index
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true).where(user_id: params[:id]).order(created_at: :desc).page(params[:page])
+    if params[:sort] == 'likes'
+      @posts = @q.result(distinct: true).where(user_id: params[:id]).order(likes_count: :desc, created_at: :desc).page(params[:page])
+    end
   end
 
   def bookmarks
     @q = current_user.bookmark_posts.ransack(params[:q])
     @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    if params[:sort] == 'likes'
+      @posts = @q.result(distinct: true).order(likes_count: :desc, created_at: :desc).page(params[:page])
+    end
   end
 
   private
