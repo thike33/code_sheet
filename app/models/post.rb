@@ -9,8 +9,8 @@ class Post < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  def likes_count
-    likes.count
+  def update_likes_count
+    self.update(likes_count: self.likes.size)
   end
 
   # titleとdescriptionに対して検索を許可する
