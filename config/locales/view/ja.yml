@@ -48,6 +48,8 @@ ja:
       title: プライバシーポリシー
     terms_of_service:
       title: 利用規約
+    contact:
+      title: お問い合わせ
   users:
     new:
       title: 新規登録
