@@ -7,23 +7,20 @@
       <div class="relative w-[120px]" data-controller="index-sort">
         <button type="button" data-action="click->index-sort#toggle" class="js-sort-btn inline-block rounded max-w-[120px] w-full p-2 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70">並び順</button>
         <div class="js-sort-content hidden absolute top-10 left-0 z-10" data-index-sort-target="sort-content">
-          <%= link_to '新着順', user_index_post_path(current_user), data: { turbo_frame: 'posts_list', action: 'click->index-sort#remove' }, class: "js-sort-btn inline-block rounded max-w-[120px] w-full p-2 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70" %>
-          <%= link_to 'いいね順', user_index_post_path(current_user, sort: 'likes'), data: { turbo_frame: 'posts_list', action: 'click->index-sort#remove' }, class: "js-sort-btn inline-block rounded max-w-[120px] w-full p-2 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70" %>
+          <%= link_to '新着順', user_index_post_path(current_user), data: { action: 'click->index-sort#remove' }, class: "js-sort-btn inline-block rounded max-w-[120px] w-full p-2 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70" %>
+          <%= link_to 'いいね順', user_index_post_path(current_user, sort: 'likes'), data: { action: 'click->index-sort#remove' }, class: "js-sort-btn inline-block rounded max-w-[120px] w-full p-2 bg-sub-color text-white text-base font-bold text-center cursor-pointer duration-300 hover:opacity-70" %>
         </div>
       </div>
     </div>
 
-    <turbo-frame id="posts_list">
-      <% if @posts.present? %>
-        <div class="grid grid-cols-1 gap-5 mt-10 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
-          <%= render @posts %>
-        </div>
-      <% else %>
-        <p class="mt-10 text-lg text-center md:mt-20"><%= t('.no_post') %></p>
-      <% end %>
-      <%= paginate @posts %>
-    </turbo-frame>
-
+    <% if @posts.present? %>
+      <div class="grid grid-cols-1 gap-5 mt-10 md:grid-cols-2 md:gap-10 lg:grid-cols-3">
+        <%= render @posts %>
+      </div>
+    <% else %>
+      <p class="mt-10 text-lg text-center md:mt-20"><%= t('.no_post') %></p>
+    <% end %>
     <%= paginate @posts %>
+
   </div>
 </section>
