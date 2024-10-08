@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :codes
     resources :likes, only: %i[create destroy], shallow: true
     get :likes, on: :collection
+    get :search, on: :collection
   end
   resources :bookmarks, only: %i[create destroy]
   get "privacy", to: "static_pages#privacy"

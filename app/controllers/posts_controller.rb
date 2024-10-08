@@ -62,9 +62,22 @@ class PostsController < ApplicationController
     end
   end
 
+  # 追加
+  def search
+    @posts = Post.where("title like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :description, :image, :image_cache, codes_attributes: [:id, :language, :body, :_destroy])
+  end
+
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
