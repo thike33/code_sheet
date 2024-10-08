@@ -62,7 +62,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # 追加
   def search
     @posts = Post.where("title like ?", "%#{params[:q]}%")
     respond_to do |format|
