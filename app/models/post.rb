@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :codes, allow_destroy: true
   belongs_to :user
 
+  enum status: { public: 0, private: 1 }, _prefix: true
+
   validates :title, presence: true, length: { maximum: 100 }
 
   mount_uploader :image, ImageUploader

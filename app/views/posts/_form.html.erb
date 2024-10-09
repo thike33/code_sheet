@@ -20,6 +20,20 @@
     <%= image_tag @post.image_url, class: 'w-64 object-contain' %>
   <% end %>
 
+  <div>
+    <label class="inline-block text-base md:text-lg"><%= t('activerecord.attributes.post.status_title') %></label>
+    <div class="flex gap-10 mt-3">
+      <%= f.label :public, for: nil do %>
+        <%= f.radio_button :status, :public, class: 'absolute opacity-0' %>
+        <span class="radio"><%= t('activerecord.attributes.post.status.public') %></span>
+      <% end %>
+      <%= f.label :private, for: nil do %>
+        <%= f.radio_button :status, :private, class: 'absolute opacity-0' %>
+        <span class="radio"><%= t('activerecord.attributes.post.status.private') %></span>
+      <% end %>
+    </div>
+  </div>
+
   <div data-controller="change-form">
     <%= f.fields_for :codes do |c| %>
       <div class="mt-5 md:mt-10 js-code" data-change-form-target="form-code">
