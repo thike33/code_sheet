@@ -8,6 +8,7 @@ ja:
       updated: "%{item}を更新しました"
       not_updated: "%{item}を更新出来ませんでした"
       destroyed: "%{item}を削除しました"
+      cannot_be_accessed: このページにはアクセスできません
   helper:
     submit:
       create: 登録する

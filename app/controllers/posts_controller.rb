@@ -24,6 +24,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.includes(:codes).find(params[:id])
+    if @post.status_private? && @post.user != current_user
+      redirect_to posts_path, danger: t('defaults.flash_message.cannot_be_accessed')
+    end
   end
 
   def edit
