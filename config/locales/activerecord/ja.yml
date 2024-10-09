@@ -11,6 +11,10 @@ ja:
         title: タイトル
         description: コード説明
         image: サムネイル
+        status_title: コードの公開・非公開
+        status:
+          public: 公開
+          private: 非公開
       code:
         language: 言語
         body: コード

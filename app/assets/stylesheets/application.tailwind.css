@@ -103,4 +103,45 @@
   .js-sort-content.is-open {
     display: block;
   }
+
+  /* ラジオボタン */
+  .radio {
+    position: relative;
+    display: block;
+    padding-left: 32px;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .radio::before {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    border: 1px solid #C8C8C8;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    background-color: #fff;
+    content: "";
+    z-index: 1;
+  }
+
+  .radio::after {
+    display: none;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #1995AD;
+    content: "";
+    z-index: 2;
+  }
+
+  /* ラジオボタンが選択された時 */
+  input[type="radio"]:checked + .radio::after {
+    display: block;
+  }
 }
