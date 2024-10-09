@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @posts = @q.result(distinct: true).includes(:user).status_public.order(created_at: :desc).page(params[:page])
     if params[:sort] == 'likes'
       @posts = @q.result(distinct: true).includes(:user).order(likes_count: :desc, created_at: :desc).page(params[:page])
     end
@@ -72,11 +72,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :image, :image_cache, codes_attributes: [:id, :language, :body, :_destroy])
-  end
-
-
-  def set_post
-    @post = Post.find(params[:id])
+    params.require(:post).permit(:title, :description, :image, :image_cache, :status, codes_attributes: [:id, :language, :body, :_destroy])
   end
 end
