@@ -34,6 +34,11 @@
     </div>
   </div>
 
+  <div>
+    <%= f.label :tag_names, class: 'inline-block text-base md:text-lg' %><em class="inline-block ml-1 text-base md:text-lg"><%= t("helper.maximum_tag_length") %></em>
+    <%= f.text_field :tag_names, class: 'block mt-2 rounded w-full p-2 bg-white text-base md:px-4 md:py-3', placeholder: ',で区切って入力してください' %>
+  </div>
+
   <div data-controller="change-form">
     <%= f.fields_for :codes do |c| %>
       <div class="mt-5 md:mt-10 js-code" data-change-form-target="form-code">

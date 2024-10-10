@@ -17,6 +17,7 @@ ja:
       edit: 編集する
       destroy: 削除する
       copy: コードコピー
+    maximum_tag_length: (10文字以内)
   header:
     title: CodeSheet
     login: ログイン
@@ -74,3 +75,5 @@ ja:
     bookmarks:
       title: ブックマーク一覧
       no_post: ブックマークされた投稿がありません
+    tags:
+      title: コード一覧

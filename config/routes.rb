@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :bookmarks
+      get 'tags/:id', action: :tags, as: :tag
     end
 
     resources :codes
