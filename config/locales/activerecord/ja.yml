@@ -15,6 +15,7 @@ ja:
         status:
           public: 公開
           private: 非公開
+        tag_names: タグ
       code:
         language: 言語
         body: コード
