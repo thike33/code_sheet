@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(:user).status_public.order(created_at: :desc).page(params[:page])
+    @posts = @q.result(distinct: true).includes(:user, :tags).status_public.order(created_at: :desc).page(params[:page])
     if params[:sort] == 'likes'
-      @posts = @q.result(distinct: true).includes(:user).order(likes_count: :desc, created_at: :desc).page(params[:page])
+      @posts = @q.result(distinct: true).includes(:user, :tags).order(likes_count: :desc, created_at: :desc).page(params[:page])
     end
   end
 
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
+    if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
       redirect_to posts_path, success: t('defaults.flash_message.created', item: Post.model_name.human)
     else
       flash.now[:danger] = t('defaults.flash_message.not_created', item: Post.model_name.human)
@@ -35,7 +35,8 @@ class PostsController < ApplicationController
 
   def update
     @post = current_user.posts.find(params[:id])
-    if @post.update(post_params)
+    @post.assign_attributes(post_params)
+    if @post.save_with_tags(tag_names: params.dig(:post, :tag_names).split(',').uniq)
       redirect_to post_path(@post), success: t('defaults.flash_message.updated', item: Post.model_name.human)
     else
       flash.now[:danger] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
@@ -51,17 +52,26 @@ class PostsController < ApplicationController
 
   def user_index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).where(user_id: params[:id]).order(created_at: :desc).page(params[:page])
+    @posts = @q.result(distinct: true).where(user_id: params[:id]).includes(:tags).order(created_at: :desc).page(params[:page])
     if params[:sort] == 'likes'
-      @posts = @q.result(distinct: true).where(user_id: params[:id]).order(likes_count: :desc, created_at: :desc).page(params[:page])
+      @posts = @q.result(distinct: true).where(user_id: params[:id]).includes(:tags).order(likes_count: :desc, created_at: :desc).page(params[:page])
     end
   end
 
   def bookmarks
     @q = current_user.bookmark_posts.ransack(params[:q])
-    @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    @posts = @q.result(distinct: true).includes(:user, :tags).order(created_at: :desc).page(params[:page])
     if params[:sort] == 'likes'
-      @posts = @q.result(distinct: true).order(likes_count: :desc, created_at: :desc).page(params[:page])
+      @posts = @q.result(distinct: true).includes(:user, :tags).order(likes_count: :desc, created_at: :desc).page(params[:page])
+    end
+  end
+
+  def tags
+    @q = Post.ransack(params[:q])
+    @tag = Tag.find(params[:id])
+    @posts = @tag.posts.includes(:user, :tags).status_public.order(created_at: :desc).page(params[:page])
+    if params[:sort] == 'likes'
+      @posts = @tag.posts.includes(:user, :tags).status_public.order(likes_count: :desc, created_at: :desc).page(params[:page])
     end
   end
 
